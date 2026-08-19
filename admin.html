@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Administration — La Longère</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f6f0e4;color:#303832;margin:0}
+.wrap{max-width:900px;margin:35px auto;padding:0 18px}
+h1{color:#405846}
+.panel{background:white;border-radius:18px;padding:24px;box-shadow:0 8px 30px #0001;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+label{font-weight:700;font-size:14px}
+input{width:100%;padding:11px;border:1px solid #cfd7cf;border-radius:10px;font-size:16px;margin-top:5px}
+button,a.btn{display:inline-block;border:0;border-radius:999px;padding:12px 18px;background:#55715b;color:white;font-weight:700;text-decoration:none;cursor:pointer;margin:6px 6px 0 0}
+.secondary{background:#e9eee8!important;color:#405846!important}
+.note{background:#fff8dc;border-left:4px solid #d2ae63;padding:14px 16px;border-radius:10px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body><div class="wrap">
+<h1>Administration — La Longère</h1>
+<div class="note"><strong>Mode de préparation :</strong> vous pouvez modifier les champs ci-dessous puis télécharger le fichier <code>site-data.json</code>. Lors de la mise en ligne, nous connecterons cet espace à l’hébergement pour que les changements soient publiés directement sans manipulation de fichier.</div>
+<div class="panel"><h2>Chambres</h2><div class="grid">
+<label>Nom chambre 1<input id="aubrac_name"></label>
+<label>Nom chambre 2<input id="ecir_name"></label>
+<label>Nom chambre 3<input id="argence_name"></label>
+<label>Nom chambre 4<input id="viadene_name"></label>
+</div></div>
+<div class="panel"><h2>Tarifs — chambre 2 personnes</h2><div class="grid">
+<label>1 nuit<input id="single_1night"></label>
+<label>2 à 4 nuits<input id="single_2to4"></label>
+<label>5 nuits et +<input id="single_5plus"></label>
+</div></div>
+<div class="panel"><h2>Tarifs — Argence + Viadène</h2><div class="grid">
+<label>1 nuit<input id="double_1night"></label>
+<label>2 à 4 nuits<input id="double_2to4"></label>
+<label>5 nuits et +<input id="double_5plus"></label>
+</div></div>
+<div class="panel"><h2>Autres informations</h2><div class="grid">
+<label>Table d’hôtes<input id="table_price"></label>
+<label>Téléphone<input id="phone"></label>
+<label>Email<input id="email"></label>
+</div></div>
+<div class="panel">
+<button onclick="downloadData()">Télécharger les modifications</button>
+<a class="btn secondary" href="index.html" target="_blank">Voir la page</a>
+</div>
+</div>
+<script>
+const keys=['aubrac_name','ecir_name','argence_name','viadene_name','single_1night','single_2to4','single_5plus','double_1night','double_2to4','double_5plus','table_price','phone','email'];
+async function load(){
+  let d={};
+  try{d=await (await fetch('site-data.json?ts='+Date.now())).json()}catch(e){}
+  keys.forEach(k=>document.getElementById(k).value=d[k]||'');
+}
+function downloadData(){
+  const d={}; keys.forEach(k=>d[k]=document.getElementById(k).value.trim());
+  const blob=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='site-data.json'; a.click(); URL.revokeObjectURL(a.href);
+}
+load();
+</script>
+</body></html>
