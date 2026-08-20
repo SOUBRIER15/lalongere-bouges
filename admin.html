@@ -166,14 +166,18 @@ function preparer() {
     email: document.getElementById("email").value
   };
 
-  const contenu = JSON.stringify(data, null, 2);
+const contenu = JSON.stringify(data, null, 2);
 
-  navigator.clipboard.writeText(contenu).then(function() {
-    alert(
-      "Vos modifications sont prêtes et ont été copiées. " +
-      "Vous pourrez ensuite les enregistrer dans le fichier site-data.json."
-    );
-  });
+const fichier = new Blob([contenu], { type: "application/json" });
+const lien = document.createElement("a");
+lien.href = URL.createObjectURL(fichier);
+lien.download = "site-data.json";
+document.body.appendChild(lien);
+lien.click();
+document.body.removeChild(lien);
+URL.revokeObjectURL(lien.href);
+
+alert("Votre fichier site-data.json est prêt.");
 }
 </script>
 
