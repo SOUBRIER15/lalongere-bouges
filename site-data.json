@@ -9,7 +9,17 @@
   "double_1night": "136 €",
   "double_2to4": "128 €",
   "double_5plus": "120 €",
+  "breakfast_text": "Un petit déjeuner gourmand est inclus dans les nuitées, avec des produits faits maison et locaux.",
   "table_price": "26 €",
+  "table_text": "Les menus sont préparés avec soin à partir de produits frais et locaux. Ils changent chaque jour au fil des légumes de saison. Nous partageons le repas avec nos hôtes pour de vrais moments de convivialité.",
+  "arrival_time": "17h00 à 19h30",
+  "departure_time": "10h00",
+  "hospitality_text": "Nous ne sommes pas des professionnels de l’hôtellerie : nous avons à cœur de prendre le temps de préparer les chambres avec soin et de partager avec nos hôtes de vrais moments de convivialité.",
+  "cgv_deposit": "La réservation devient définitive après le versement d’un acompte de 30 % du montant total du séjour. Si l’acompte n’est pas reçu dans les 5 jours suivant la réservation, celle-ci sera automatiquement annulée. Le solde du séjour est à régler à l’arrivée.",
+  "cgv_cancel": "L’annulation est gratuite jusqu’à 7 jours avant la date d’arrivée. En cas d’annulation moins de 7 jours avant l’arrivée, l’acompte versé reste acquis.",
+  "cgv_change": "Toute demande de modification de dates ou de durée du séjour est étudiée selon les disponibilités de La Longère. Une modification peut entraîner une adaptation du montant de la réservation.",
+  "pets_text": "Nos amis les animaux ne sont pas acceptés pour des raisons d’hygiène.",
+  "privacy_text": "Les informations communiquées lors d’une demande ou d’une réservation sont utilisées uniquement pour la gestion du séjour. Aucun fichier client n’est partagé avec des tiers.",
   "phone": "06 83 15 72 33",
   "email": "lalongere.bouges@gmail.com"
 }

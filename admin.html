@@ -1,94 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Administration — La Longère</title>
 <style>
-body{font-family:Arial,sans-serif;background:#f5f0e6;color:#333;margin:0;padding:30px}
-.admin{max-width:850px;margin:auto;background:white;padding:35px;border-radius:20px;box-shadow:0 5px 20px rgba(0,0,0,.10)}
-h1{color:#58735b;text-align:center}
-h2{color:#58735b;margin-top:30px;border-bottom:1px solid #ddd;padding-bottom:8px}
-label{display:block;font-weight:bold;margin-top:15px}
-input,textarea{width:100%;box-sizing:border-box;padding:11px;margin-top:5px;border:1px solid #bbb;border-radius:8px;font-size:16px;font-family:Arial,sans-serif}
-textarea{min-height:105px;resize:vertical}
-button{display:block;width:100%;margin-top:30px;padding:15px;border:none;border-radius:10px;background:#58735b;color:white;font-size:18px;font-weight:bold;cursor:pointer}
-.info{background:#f5f0e6;padding:15px;border-radius:10px;margin-bottom:25px;line-height:1.5}
-</style>
-</head>
-<body>
-<div class="admin">
-<h1>Administration de La Longère</h1>
-<div class="info">Modifiez ici les informations du site, puis cliquez sur « Préparer mes modifications ». Un fichier <strong>site-data.json</strong> sera téléchargé automatiquement.</div>
-
-<h2>Noms des chambres</h2>
-<label>Chambre Aubrac</label><input id="aubrac_name" value="Aubrac">
-<label>Chambre Écir</label><input id="ecir_name" value="Écir">
-<label>Chambre Argence</label><input id="argence_name" value="Argence">
-<label>Chambre Viadène</label><input id="viadene_name" value="Viadène">
-
-<h2>Tarifs chambres</h2>
-<label>1 nuit — chambre 2 personnes</label><input id="single_1night" value="78 €">
-<label>2 à 4 nuits — chambre 2 personnes</label><input id="single_2to4" value="74 €">
-<label>À partir de 5 nuits — chambre 2 personnes</label><input id="single_5plus" value="70 €">
-<label>Argence + Viadène — 1 nuit</label><input id="double_1night" value="136 €">
-<label>Argence + Viadène — 2 à 4 nuits</label><input id="double_2to4" value="128 €">
-<label>Argence + Viadène — à partir de 5 nuits</label><input id="double_5plus" value="120 €">
-
-<h2>Petit déjeuner</h2>
-<label>Texte du petit déjeuner</label>
-<textarea id="breakfast_text">Un petit déjeuner gourmand est inclus dans les nuitées, avec pain frais, viennoiseries, confitures maison, boissons chaudes, jus de fruit, yaourt maison et miel local.</textarea>
-
-<h2>Table d'hôtes</h2>
-<label>Prix du menu</label><input id="table_price" value="26 €">
-<label>Texte de la table d'hôtes</label>
-<textarea id="table_text">Servie à partir de 19h30, uniquement sur réservation 48 h à l’avance. Menu hors boissons. Apéritif offert. Les menus sont préparés avec soin à partir de produits frais et locaux et changent selon les saisons.</textarea>
-
-<h2>Horaires & informations pratiques</h2>
-<label>Horaires d'arrivée</label><input id="arrival_time" value="17h00 à 19h30">
-<label>Heure limite de départ</label><input id="departure_time" value="10h00">
-<label>Texte d'accueil / horaires</label>
-<textarea id="hospitality_text">Nous ne sommes pas des professionnels de l’hôtellerie : nous avons à cœur de prendre le temps de préparer les chambres avec soin et de partager avec nos hôtes de vrais moments de convivialité.</textarea>
-
-<h2>Conditions générales de vente & annulation</h2>
-<label>Réservation & acompte</label>
-<textarea id="cgv_deposit">La réservation devient définitive après le versement d’un acompte de 30 % du montant total du séjour. Si l’acompte n’est pas reçu dans les 5 jours suivant la réservation, celle-ci sera automatiquement annulée. Le solde du séjour est à régler à l’arrivée.</textarea>
-
-<label>Annulation</label>
-<textarea id="cgv_cancel">L’annulation est gratuite jusqu’à 7 jours avant la date d’arrivée. En cas d’annulation moins de 7 jours avant l’arrivée, l’acompte versé reste acquis.</textarea>
-
-<label>Modification du séjour</label>
-<textarea id="cgv_change">Toute demande de modification de dates ou de durée du séjour est étudiée selon les disponibilités de La Longère. Une modification peut entraîner une adaptation du montant de la réservation.</textarea>
-
-<label>Animaux</label>
-<textarea id="pets_text">Nos amis les animaux ne sont pas acceptés, notamment pour des raisons d’hygiène.</textarea>
-
-<label>Données personnelles</label>
-<textarea id="privacy_text">Les informations communiquées sont utilisées uniquement pour la gestion des réservations. Aucun fichier client n’est partagé avec des tiers.</textarea>
-
-<h2>Coordonnées</h2>
-<label>Téléphone</label><input id="phone" value="06 83 15 72 33">
-<label>Adresse e-mail</label><input id="email" value="lalongere.bouges@gmail.com">
-
-<button onclick="preparer()">Préparer mes modifications</button>
-</div>
-
+body{font-family:Arial,sans-serif;background:#f5f0e6;color:#333;margin:0;padding:30px}.admin{max-width:850px;margin:auto;background:white;padding:35px;border-radius:20px;box-shadow:0 5px 20px rgba(0,0,0,.10)}h1{color:#58735b;text-align:center}h2{color:#58735b;margin-top:30px;border-bottom:1px solid #ddd;padding-bottom:8px}label{display:block;font-weight:bold;margin-top:15px}input,textarea{width:100%;box-sizing:border-box;padding:11px;margin-top:5px;border:1px solid #bbb;border-radius:8px;font-size:16px;font-family:Arial,sans-serif}textarea{min-height:105px;resize:vertical}button{display:block;width:100%;margin-top:30px;padding:15px;border:none;border-radius:10px;background:#58735b;color:white;font-size:18px;font-weight:bold;cursor:pointer}.info{background:#f5f0e6;padding:15px;border-radius:10px;margin-bottom:25px;line-height:1.5}
+</style></head><body><div class="admin"><h1>Administration de La Longère</h1><div class="info">Les valeurs actuelles du site sont chargées automatiquement. Modifiez ce que vous souhaitez puis cliquez sur <strong>Préparer mes modifications</strong>.</div>
+<h2>Noms des chambres</h2><label>Chambre Aubrac</label><input id="aubrac_name"><label>Chambre Écir</label><input id="ecir_name"><label>Chambre Argence</label><input id="argence_name"><label>Chambre Viadène</label><input id="viadene_name">
+<h2>Tarifs chambres</h2><label>1 nuit — chambre 2 personnes</label><input id="single_1night"><label>2 à 4 nuits — chambre 2 personnes</label><input id="single_2to4"><label>À partir de 5 nuits — chambre 2 personnes</label><input id="single_5plus"><label>Argence + Viadène — 1 nuit</label><input id="double_1night"><label>Argence + Viadène — 2 à 4 nuits</label><input id="double_2to4"><label>Argence + Viadène — à partir de 5 nuits</label><input id="double_5plus">
+<h2>Petit déjeuner</h2><label>Texte du petit déjeuner</label><textarea id="breakfast_text"></textarea>
+<h2>Table d'hôtes</h2><label>Prix du menu</label><input id="table_price"><label>Texte de la table d'hôtes</label><textarea id="table_text"></textarea>
+<h2>Horaires & informations pratiques</h2><label>Horaires d'arrivée</label><input id="arrival_time"><label>Heure limite de départ</label><input id="departure_time"><label>Texte d'accueil / horaires</label><textarea id="hospitality_text"></textarea>
+<h2>Conditions générales de vente & annulation</h2><label>Réservation & acompte</label><textarea id="cgv_deposit"></textarea><label>Annulation</label><textarea id="cgv_cancel"></textarea><label>Modification du séjour</label><textarea id="cgv_change"></textarea><label>Animaux</label><textarea id="pets_text"></textarea><label>Données personnelles</label><textarea id="privacy_text"></textarea>
+<h2>Coordonnées</h2><label>Téléphone</label><input id="phone"><label>Adresse e-mail</label><input id="email"><button onclick="preparer()">Préparer mes modifications</button></div>
 <script>
-function preparer(){
 const ids=["aubrac_name","ecir_name","argence_name","viadene_name","single_1night","single_2to4","single_5plus","double_1night","double_2to4","double_5plus","breakfast_text","table_price","table_text","arrival_time","departure_time","hospitality_text","cgv_deposit","cgv_cancel","cgv_change","pets_text","privacy_text","phone","email"];
-const data={};
-ids.forEach(id=>data[id]=document.getElementById(id).value);
-const contenu=JSON.stringify(data,null,2);
-const fichier=new Blob([contenu],{type:"application/json"});
-const lien=document.createElement("a");
-lien.href=URL.createObjectURL(fichier);
-lien.download="site-data.json";
-document.body.appendChild(lien);
-lien.click();
-document.body.removeChild(lien);
-URL.revokeObjectURL(lien.href);
-alert("Votre fichier site-data.json est prêt.");
-}
-</script>
-</body>
-</html>
+async function charger(){try{const r=await fetch('site-data.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)return;const d=await r.json();ids.forEach(id=>{if(d[id]!==undefined)document.getElementById(id).value=d[id];});}catch(e){}}
+function preparer(){const data={};ids.forEach(id=>data[id]=document.getElementById(id).value);const contenu=JSON.stringify(data,null,2);const fichier=new Blob([contenu],{type:'application/json'});const lien=document.createElement('a');lien.href=URL.createObjectURL(fichier);lien.download='site-data.json';document.body.appendChild(lien);lien.click();document.body.removeChild(lien);URL.revokeObjectURL(lien.href);alert('Votre fichier site-data.json est prêt.');}
+charger();
+</script></body></html>
