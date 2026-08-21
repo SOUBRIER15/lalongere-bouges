@@ -1,215 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Administration — La Longère</title>
 <style>
-body{font-family:Arial,sans-serif;background:#f5f0e6;color:#333;margin:0;padding:30px}
-.admin{max-width:900px;margin:auto;background:white;padding:35px;border-radius:20px;box-shadow:0 5px 20px rgba(0,0,0,.10)}
-h1{color:#58735b;text-align:center}
-h2{color:#58735b;margin-top:32px;border-bottom:1px solid #ddd;padding-bottom:8px}
-label{display:block;font-weight:bold;margin-top:15px}
-input,textarea{width:100%;box-sizing:border-box;padding:11px;margin-top:5px;border:1px solid #bbb;border-radius:8px;font-size:16px;font-family:Arial,sans-serif}
-input[type=file]{background:#fff}
-textarea{min-height:105px;resize:vertical}
-button{display:block;width:100%;margin-top:30px;padding:15px;border:none;border-radius:10px;background:#58735b;color:white;font-size:18px;font-weight:bold;cursor:pointer}
-.info{background:#f5f0e6;padding:15px;border-radius:10px;margin-bottom:25px;line-height:1.5}
-.photo-field{padding:14px 0 18px;border-bottom:1px solid #eee}
-.photo-preview{display:block;width:220px;height:145px;object-fit:cover;border-radius:12px;margin:8px 0;border:1px solid #ddd;background:#f7f7f7}
-.hint{font-size:13px;color:#666;margin-top:5px}
-.status{margin-top:12px;padding:10px 12px;border-radius:10px;background:#eef3ea;color:#405846;display:none}
-</style>
-</head>
-<body>
-<div class="admin">
-<h1>Administration de La Longère</h1>
-<div class="info">Les valeurs et photos actuelles sont chargées automatiquement. Modifiez uniquement ce que vous souhaitez, puis cliquez sur <strong>Préparer mes modifications</strong>. Un seul fichier <strong>site-data.json</strong> sera créé pour les textes, tarifs et photos.</div>
-
-<h2>Noms des chambres</h2>
-<label>Chambre Aubrac</label><input id="aubrac_name">
-<label>Chambre Écir</label><input id="ecir_name">
-<label>Chambre Argence</label><input id="argence_name">
-<label>Chambre Viadène</label><input id="viadene_name">
-
-<h2>Tarifs chambres</h2>
-<label>1 nuit — chambre 2 personnes</label><input id="single_1night">
-<label>2 à 4 nuits — chambre 2 personnes</label><input id="single_2to4">
-<label>À partir de 5 nuits — chambre 2 personnes</label><input id="single_5plus">
-<label>Argence + Viadène — 1 nuit</label><input id="double_1night">
-<label>Argence + Viadène — 2 à 4 nuits</label><input id="double_2to4">
-<label>Argence + Viadène — à partir de 5 nuits</label><input id="double_5plus">
-
-<h2>Petit déjeuner</h2>
-<label>Texte du petit déjeuner</label><textarea id="breakfast_text"></textarea>
-
-<h2>Table d'hôtes</h2>
-<label>Prix du menu</label><input id="table_price">
-<label>Texte de la table d'hôtes</label><textarea id="table_text"></textarea>
-
-<h2>Horaires & informations pratiques</h2>
-<label>Horaires d'arrivée</label><input id="arrival_time">
-<label>Heure limite de départ</label><input id="departure_time">
-<label>Texte d'accueil / horaires</label><textarea id="hospitality_text"></textarea>
-
-<h2>Conditions générales de vente & annulation</h2>
-<label>Réservation & acompte</label><textarea id="cgv_deposit"></textarea>
-<label>Annulation</label><textarea id="cgv_cancel"></textarea>
-<label>Modification du séjour</label><textarea id="cgv_change"></textarea>
-<label>Animaux</label><textarea id="pets_text"></textarea>
-<label>Données personnelles</label><textarea id="privacy_text"></textarea>
-
-<h2>Coordonnées</h2>
-<label>Téléphone</label><input id="phone">
-<label>Adresse e-mail</label><input id="email">
-
-<h2>Photos</h2>
-<div class="info">Pour changer une photo, cliquez sur <strong>Choisir un fichier</strong>. Si vous ne choisissez rien, la photo actuelle sera conservée. Les nouvelles photos sont automatiquement redimensionnées pour éviter d’alourdir le site.</div>
-<div class="photo-field">
-<label>Grande photo de présentation</label>
-<img class="photo-preview" id="preview_hero_photo" alt="Aperçu Grande photo de présentation">
-<input type="file" id="hero_photo" accept="image/*">
-<div class="hint">Laissez vide pour conserver la photo actuelle.</div>
-</div>
-<div class="photo-field">
-<label>Espace commun</label>
-<img class="photo-preview" id="preview_common_space_photo" alt="Aperçu Espace commun">
-<input type="file" id="common_space_photo" accept="image/*">
-<div class="hint">Laissez vide pour conserver la photo actuelle.</div>
-</div>
-<div class="photo-field">
-<label>Chambre Aubrac</label>
-<img class="photo-preview" id="preview_aubrac_photo" alt="Aperçu Chambre Aubrac">
-<input type="file" id="aubrac_photo" accept="image/*">
-<div class="hint">Laissez vide pour conserver la photo actuelle.</div>
-</div>
-<div class="photo-field">
-<label>Chambre Écir</label>
-<img class="photo-preview" id="preview_ecir_photo" alt="Aperçu Chambre Écir">
-<input type="file" id="ecir_photo" accept="image/*">
-<div class="hint">Laissez vide pour conserver la photo actuelle.</div>
-</div>
-<div class="photo-field">
-<label>Chambre Argence</label>
-<img class="photo-preview" id="preview_argence_photo" alt="Aperçu Chambre Argence">
-<input type="file" id="argence_photo" accept="image/*">
-<div class="hint">Laissez vide pour conserver la photo actuelle.</div>
-</div>
-<div class="photo-field">
-<label>Chambre Viadène</label>
-<img class="photo-preview" id="preview_viadene_photo" alt="Aperçu Chambre Viadène">
-<input type="file" id="viadene_photo" accept="image/*">
-<div class="hint">Laissez vide pour conserver la photo actuelle.</div>
-</div>
-<div class="photo-field">
-<label>Petit déjeuner</label>
-<img class="photo-preview" id="preview_breakfast_photo" alt="Aperçu Petit déjeuner">
-<input type="file" id="breakfast_photo" accept="image/*">
-<div class="hint">Laissez vide pour conserver la photo actuelle.</div>
-</div>
-<div class="photo-field">
-<label>Table d’hôtes</label>
-<img class="photo-preview" id="preview_table_photo" alt="Aperçu Table d’hôtes">
-<input type="file" id="table_photo" accept="image/*">
-<div class="hint">Laissez vide pour conserver la photo actuelle.</div>
-</div>
-<div class="photo-field">
-<label>Espace extérieur</label>
-<img class="photo-preview" id="preview_exterior_photo" alt="Aperçu Espace extérieur">
-<input type="file" id="exterior_photo" accept="image/*">
-<div class="hint">Laissez vide pour conserver la photo actuelle.</div>
-</div>
-<div class="photo-field">
-<label>Grange / abri motos-vélos</label>
-<img class="photo-preview" id="preview_barn_photo" alt="Aperçu Grange / abri motos-vélos">
-<input type="file" id="barn_photo" accept="image/*">
-<div class="hint">Laissez vide pour conserver la photo actuelle.</div>
-</div>
-<div class="photo-field">
-<label>Salle de bains Aubrac</label>
-<img class="photo-preview" id="preview_aubrac_bathroom_photo" alt="Aperçu Salle de bains Aubrac">
-<input type="file" id="aubrac_bathroom_photo" accept="image/*">
-<div class="hint">Laissez vide pour conserver la photo actuelle.</div>
-</div>
-<div class="photo-field">
-<label>Salon commun</label>
-<img class="photo-preview" id="preview_lounge_photo" alt="Aperçu Salon commun">
-<input type="file" id="lounge_photo" accept="image/*">
-<div class="hint">Laissez vide pour conserver la photo actuelle.</div>
+body{font-family:Arial,sans-serif;background:#f5f0e6;color:#333;margin:0;padding:30px}.admin{max-width:850px;margin:auto;background:white;padding:35px;border-radius:20px;box-shadow:0 5px 20px rgba(0,0,0,.10)}h1{color:#58735b;text-align:center}h2{color:#58735b;margin-top:30px;border-bottom:1px solid #ddd;padding-bottom:8px}label{display:block;font-weight:bold;margin-top:15px}input,textarea{width:100%;box-sizing:border-box;padding:11px;margin-top:5px;border:1px solid #bbb;border-radius:8px;font-size:16px;font-family:Arial,sans-serif}textarea{min-height:105px;resize:vertical}button{display:block;width:100%;margin-top:30px;padding:15px;border:none;border-radius:10px;background:#58735b;color:white;font-size:18px;font-weight:bold;cursor:pointer}.info{background:#f5f0e6;padding:15px;border-radius:10px;margin-bottom:25px;line-height:1.5}
+</style></head><body><div class="admin"><h1>Administration de La Longère</h1><div class="info">Les valeurs actuelles du site sont chargées automatiquement. Modifiez ce que vous souhaitez puis cliquez sur <strong>Préparer mes modifications</strong>.</div>
+<h2>Noms des chambres</h2><label>Chambre Aubrac</label><input id="aubrac_name"><label>Chambre Écir</label><input id="ecir_name"><label>Chambre Argence</label><input id="argence_name"><label>Chambre Viadène</label><input id="viadene_name">
+<h2>Tarifs chambres</h2><label>1 nuit — chambre 2 personnes</label><input id="single_1night"><label>2 à 4 nuits — chambre 2 personnes</label><input id="single_2to4"><label>À partir de 5 nuits — chambre 2 personnes</label><input id="single_5plus"><label>Argence + Viadène — 1 nuit</label><input id="double_1night"><label>Argence + Viadène — 2 à 4 nuits</label><input id="double_2to4"><label>Argence + Viadène — à partir de 5 nuits</label><input id="double_5plus">
+<h2>Petit déjeuner</h2><label>Texte du petit déjeuner</label><textarea id="breakfast_text"></textarea>
+<h2>Table d'hôtes</h2><label>Prix du menu</label><input id="table_price"><label>Texte de la table d'hôtes</label><textarea id="table_text"></textarea>
+<h2>Horaires & informations pratiques</h2><label>Horaires d'arrivée</label><input id="arrival_time"><label>Heure limite de départ</label><input id="departure_time"><label>Texte d'accueil / horaires</label><textarea id="hospitality_text"></textarea>
+<h2>Conditions générales de vente & annulation</h2><label>Réservation & acompte</label><textarea id="cgv_deposit"></textarea><label>Annulation</label><textarea id="cgv_cancel"></textarea><label>Modification du séjour</label><textarea id="cgv_change"></textarea><label>Animaux</label><textarea id="pets_text"></textarea><label>Données personnelles</label><textarea id="privacy_text"></textarea>
+<h2>Coordonnées</h2><label>Téléphone</label><input id="phone"><label>Adresse e-mail</label><input id="email">
+<div class="info" style="margin-top:28px">
+<strong>Après avoir cliqué sur « Préparer mes modifications » :</strong><br>
+1. Un fichier <strong>site-data.json</strong> sera téléchargé sur votre ordinateur.<br>
+2. Ouvrez GitHub et votre dépôt <strong>lalongere-bouges</strong>.<br>
+3. Cliquez sur <strong>Add file → Upload files</strong>.<br>
+4. Choisissez le fichier <strong>site-data.json</strong> téléchargé.<br>
+5. Cliquez sur <strong>Commit changes</strong>.<br><br>
+Si votre ordinateur renomme le fichier en <strong>site-data(1).json</strong>, renommez-le d’abord exactement <strong>site-data.json</strong> avant de l’envoyer sur GitHub.
 </div>
 
-<div id="status" class="status">Préparation du fichier en cours…</div>
-<button onclick="preparer()">Préparer mes modifications</button>
-</div>
-
+<button onclick="preparer()">Préparer mes modifications</button></div>
 <script>
-const textIds=["aubrac_name","ecir_name","argence_name","viadene_name","single_1night","single_2to4","single_5plus","double_1night","double_2to4","double_5plus","breakfast_text","table_price","table_text","arrival_time","departure_time","hospitality_text","cgv_deposit","cgv_cancel","cgv_change","pets_text","privacy_text","phone","email"];
-const photoIds=["hero_photo", "common_space_photo", "aubrac_photo", "ecir_photo", "argence_photo", "viadene_photo", "breakfast_photo", "table_photo", "exterior_photo", "barn_photo", "aubrac_bathroom_photo", "lounge_photo"];
-let currentData={};
-
-async function charger(){
-  try{
-    const r=await fetch('site-data.json?ts='+Date.now(),{cache:'no-store'});
-    if(!r.ok)return;
-    currentData=await r.json();
-    textIds.forEach(id=>{ if(currentData[id]!==undefined) document.getElementById(id).value=currentData[id]; });
-    photoIds.forEach(id=>{
-      if(currentData[id]) document.getElementById('preview_'+id).src=currentData[id];
-      document.getElementById(id).addEventListener('change', function(){
-        const f=this.files && this.files[0];
-        if(f) document.getElementById('preview_'+id).src=URL.createObjectURL(f);
-      });
-    });
-  }catch(e){console.error(e);}
-}
-
-function imageToDataURL(file){
-  return new Promise((resolve,reject)=>{
-    const reader=new FileReader();
-    reader.onerror=reject;
-    reader.onload=()=>{
-      const img=new Image();
-      img.onerror=reject;
-      img.onload=()=>{
-        const maxDim=1800;
-        const scale=Math.min(1,maxDim/Math.max(img.width,img.height));
-        const w=Math.round(img.width*scale), h=Math.round(img.height*scale);
-        const canvas=document.createElement('canvas');
-        canvas.width=w; canvas.height=h;
-        const ctx=canvas.getContext('2d');
-        ctx.drawImage(img,0,0,w,h);
-        resolve(canvas.toDataURL('image/jpeg',0.86));
-      };
-      img.src=reader.result;
-    };
-    reader.readAsDataURL(file);
-  });
-}
-
-async function preparer(){
-  const status=document.getElementById('status');
-  status.style.display='block';
-  const data={...currentData};
-  textIds.forEach(id=>data[id]=document.getElementById(id).value);
-
-  for(const id of photoIds){
-    const input=document.getElementById(id);
-    if(input.files && input.files[0]) data[id]=await imageToDataURL(input.files[0]);
-  }
-
-  const contenu=JSON.stringify(data,null,2);
-  const fichier=new Blob([contenu],{type:'application/json'});
-  const lien=document.createElement('a');
-  lien.href=URL.createObjectURL(fichier);
-  lien.download='site-data.json';
-  document.body.appendChild(lien);
-  lien.click();
-  document.body.removeChild(lien);
-  URL.revokeObjectURL(lien.href);
-  status.textContent='Votre fichier site-data.json est prêt.';
-  alert('Votre fichier site-data.json est prêt.');
-}
+const ids=["aubrac_name","ecir_name","argence_name","viadene_name","single_1night","single_2to4","single_5plus","double_1night","double_2to4","double_5plus","breakfast_text","table_price","table_text","arrival_time","departure_time","hospitality_text","cgv_deposit","cgv_cancel","cgv_change","pets_text","privacy_text","phone","email"];
+async function charger(){try{const r=await fetch('site-data.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)return;const d=await r.json();ids.forEach(id=>{if(d[id]!==undefined)document.getElementById(id).value=d[id];});}catch(e){}}
+function preparer(){const data={};ids.forEach(id=>data[id]=document.getElementById(id).value);const contenu=JSON.stringify(data,null,2);const fichier=new Blob([contenu],{type:'application/json'});const lien=document.createElement('a');lien.href=URL.createObjectURL(fichier);lien.download='site-data.json';document.body.appendChild(lien);lien.click();document.body.removeChild(lien);URL.revokeObjectURL(lien.href);alert('Votre fichier site-data.json est prêt.');}
 charger();
-</script>
-</body>
-</html>
+</script></body></html>
